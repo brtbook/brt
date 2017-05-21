@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>DeviceModelsCore</id>
+    <version>1.0.0</version>
+    <authors>Bob Familiar</authors>
+    <owners>Bob Familiar</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>DeviceModelsCore</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright brt 2016</copyright>
+
+  </metadata>
+
+<files>
+  <file src="bin\debug\netstandard1.6\*.dll" target="lib\dotnet" /> 
+  <file src="bin\debug\netstandard1.6\*.pdb" target="lib\dotnet" /> 
+  <file src="bin\debug\netstandard1.6\*.json" target="lib\dotnet" />
+</files>
+
+
+</package>

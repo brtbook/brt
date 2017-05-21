@@ -1,0 +1,16 @@
+C:\Users\bob\Source\Repos\brt\microservices\Registry\IRegistry\bin\Debug\IRegistry.dll
+C:\Users\bob\Source\Repos\brt\microservices\Registry\IRegistry\bin\Debug\IRegistry.pdb
+C:\Users\bob\Source\Repos\brt\microservices\Registry\IRegistry\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bob\Source\Repos\brt\microservices\Registry\IRegistry\bin\Debug\RegistryModels.dll
+C:\Users\bob\Source\Repos\brt\microservices\Registry\IRegistry\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bob\Source\Repos\brt\microservices\Registry\IRegistry\obj\Debug\IRegistry.csprojResolveAssemblyReference.cache
+C:\Users\bob\Source\Repos\brt\microservices\Registry\IRegistry\obj\Debug\IRegistry.dll
+C:\Users\bob\Source\Repos\brt\microservices\Registry\IRegistry\obj\Debug\IRegistry.pdb
+C:\Users\bobfa\Source\Repos\brt\microservices\Registry\IRegistry\bin\Debug\IRegistry.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Registry\IRegistry\bin\Debug\IRegistry.pdb
+C:\Users\bobfa\Source\Repos\brt\microservices\Registry\IRegistry\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Registry\IRegistry\bin\Debug\RegistryModels.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Registry\IRegistry\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bobfa\Source\Repos\brt\microservices\Registry\IRegistry\obj\Debug\IRegistry.csprojResolveAssemblyReference.cache
+C:\Users\bobfa\Source\Repos\brt\microservices\Registry\IRegistry\obj\Debug\IRegistry.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Registry\IRegistry\obj\Debug\IRegistry.pdb

@@ -1,0 +1,141 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Registry.Dev",
+    "version": "1.0"
+  },
+  "host": "[appservice-name].azurewebsites.net",
+  "basePath": "/registry",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/profiles": {
+      "get": {
+        "operationId": "Get All Profiles",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "operationId": "Create a Profile",
+        "parameters": [],
+        "responses": {}
+      },
+      "put": {
+        "operationId": "Update a Profile",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/profiles/id/{id}": {
+      "get": {
+        "operationId": "Get a Profile by Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "operationId": "Delete a Profile",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/profiles/state/{state}": {
+      "get": {
+        "operationId": "Get All Profiles by State",
+        "parameters": [
+          {
+            "name": "state",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/profiles/type/{type}": {
+      "get": {
+        "operationId": "Get All Profiles by Type",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/profiles/firstname/{firstname}/lastname/{lastname}": {
+      "get": {
+        "operationId": "Get a Profile by First, Last Name",
+        "parameters": [
+          {
+            "name": "firstname",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lastname",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/profiles/company/{company}": {
+      "get": {
+        "operationId": "Get All Profiles by Company",
+        "parameters": [
+          {
+            "name": "company",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/profiles/authid/{authid}": {
+      "get": {
+        "operationId": "Get a Profile By Auth Id",
+        "parameters": [
+          {
+            "name": "authid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  }
+}

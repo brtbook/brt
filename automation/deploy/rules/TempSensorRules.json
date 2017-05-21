@@ -1,0 +1,12 @@
+[
+  {
+    "MessageType": 3,
+    "MeasurementType" : 1,
+    "NormalUpper": 99.0,
+    "NormalLower" : 97.0 ,
+    "AlertUpper": 101.0,
+    "AlertLower": 95.0,
+    "AlarmUpper": 103.0,
+    "AlarmLower": 93.0
+  }
+]

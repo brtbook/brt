@@ -1,0 +1,15 @@
+C:\Users\bob\Source\Repos\brt\microservices\Reference\IReference\bin\Debug\IReference.dll
+C:\Users\bob\Source\Repos\brt\microservices\Reference\IReference\bin\Debug\IReference.pdb
+C:\Users\bob\Source\Repos\brt\microservices\Reference\IReference\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bob\Source\Repos\brt\microservices\Reference\IReference\bin\Debug\ReferenceModels.dll
+C:\Users\bob\Source\Repos\brt\microservices\Reference\IReference\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bob\Source\Repos\brt\microservices\Reference\IReference\obj\Debug\IReference.dll
+C:\Users\bob\Source\Repos\brt\microservices\Reference\IReference\obj\Debug\IReference.pdb
+C:\Users\bobfa\Source\Repos\brt\microservices\Reference\IReference\bin\Debug\IReference.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Reference\IReference\bin\Debug\IReference.pdb
+C:\Users\bobfa\Source\Repos\brt\microservices\Reference\IReference\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Reference\IReference\bin\Debug\ReferenceModels.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Reference\IReference\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bobfa\Source\Repos\brt\microservices\Reference\IReference\obj\Debug\IReference.csprojResolveAssemblyReference.cache
+C:\Users\bobfa\Source\Repos\brt\microservices\Reference\IReference\obj\Debug\IReference.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Reference\IReference\obj\Debug\IReference.pdb

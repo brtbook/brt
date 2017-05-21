@@ -1,0 +1,87 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "azureLocation": {
+        "type": "string"
+      },
+      "appSiteName": {
+        "type": "string"
+      },
+      "appServicePlan": {
+        "type": "string"
+      },
+      "appServicePlanSku": {
+        "type": "string",
+        "defaultValue": "Standard",
+        "allowedValues": [
+          "Free",
+          "Shared",
+          "Basic",
+          "Standard"
+        ]
+      },
+      "appServicePlanSkuSize": {
+        "type": "string",
+        "defaultValue": "0",
+        "allowedValues": [
+          "0",
+          "1",
+          "2"
+        ]
+      }
+    },    
+    "resources": [
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "sku": {
+                "name": "S1",
+                "tier": "[parameters('appServicePlanSku')]",
+                "size": "S1",
+                "family": "S",
+                "capacity": 1
+            },
+            "name": "[parameters('appServicePlan')]",
+            "apiVersion": "2015-08-01",
+            "location": "[parameters('azureLocation')]",
+            "properties": {
+                "name": "[parameters('appServicePlan')]",
+                "numberOfWorkers": 1
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "name": "[parameters('appSiteName')]",
+            "apiVersion": "2015-08-01",
+            "location": "[parameters('azureLocation')]",
+            "properties": {
+                "name": "[parameters('appSiteName')]",
+                "hostNames": [
+                    "[concat(parameters('appSiteName'), '.azurewebsites.net')]"
+                ],
+                "enabledHostNames": [
+                    "[concat(parameters('appSiteName'), '.azurewebsites.net')]",
+                    "[concat(parameters('appSiteName'), '.scm.azurewebsites.net')]"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(parameters('appSiteName'),'.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('appSiteName'),'.scm.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlan'))]"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', parameters('appServicePlan'))]"       
+            ]
+        }
+    ]
+}

@@ -1,0 +1,109 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Simulation.Dev",
+    "version": "1.0"
+  },
+  "host": "[appservice-name].azurewebsites.net",
+  "basePath": "/simulation",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/datasets": {
+      "post": {
+        "operationId": "Create a Simulation Dataset",
+        "parameters": [],
+        "responses": {}
+      },
+      "put": {
+        "operationId": "Update a Simulation Dataset",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/datasets/id/{id}": {
+      "delete": {
+        "operationId": "Delete a Simulation Dataset by Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "get": {
+        "operationId": "Get a Simulation Dataset by Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/datasets/name/{name}": {
+      "get": {
+        "operationId": "Get a Simulation Dataset by Name",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/datasets/rows/id/{id}": {
+      "get": {
+        "operationId": "Get a Simulation Dataset Row by Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "operationId": "Delete a Simulation Datarow by Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/datasets/rows": {
+      "post": {
+        "operationId": "Create a Simulation Datarow",
+        "parameters": [],
+        "responses": {}
+      },
+      "put": {
+        "operationId": "Update a Simulation Datarow",
+        "parameters": [],
+        "responses": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Reference.Administration.Dev",
+    "version": "1.0"
+  },
+  "host": "[appservice-name].azurewebsites.net",
+  "basePath": "/reference/admin",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/entities": {
+      "get": {
+        "operationId": "Get All Entities",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "operationId": "Create an Entity",
+        "parameters": [],
+        "responses": {}
+      },
+      "put": {
+        "operationId": "Update an Entity",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/entities/id/{id}": {
+      "delete": {
+        "operationId": "Delete an Entity by Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  }
+}

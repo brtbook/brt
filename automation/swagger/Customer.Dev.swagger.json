@@ -1,0 +1,74 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Customer.Dev",
+    "version": "1.0"
+  },
+  "host": "[appservice-name].azurewebsites.net",
+  "basePath": "/customer",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/organizations": {
+      "get": {
+        "operationId": "Get All Customer",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "operationId": "Create a Customer",
+        "parameters": [],
+        "responses": {}
+      },
+      "put": {
+        "operationId": "Update a Customer",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/organizations/id/{id}": {
+      "get": {
+        "operationId": "Get a Customer by Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "operationId": "Delete a Customer",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/organizations/name/{name}": {
+      "get": {
+        "operationId": "Get Customer by Name",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Device.Dev",
+    "version": "1.0"
+  },
+  "host": "[appservice-name].azurewebsites.net",
+  "basePath": "/device",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/manifests": {
+      "get": {
+        "operationId": "Get All Device Manifests",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "operationId": "Create a Device Manifest",
+        "parameters": [],
+        "responses": {}
+      },
+      "put": {
+        "operationId": "Update a Device Manifest",
+        "parameters": [
+        ],
+        "responses": {}
+      }
+    },
+    "/manifests/id/{id}": {
+      "get": {
+        "operationId": "Get a Device Manifest by Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "operationId": "Delete a Device Manifest",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/manifests/extension/index/{index}/key/{key}/value/{value}": {
+      "get": {
+        "operationId": "Get a Device Manifest by Extension",
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/manifests/teammate/{teammateid}": {
+      "get": {
+        "operationId": "Get Manifest by Teammate Id",
+        "parameters": [
+          {
+            "name": "teammateid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/manifests/customer/{customerid}": {
+      "get": {
+        "operationId": "Get Manifests by Customer Id",
+        "parameters": [
+          {
+            "name": "customerid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/twin/deviceid/{deviceid}": {
+      "get": {
+        "operationId": "Get Device Twin",
+        "parameters": [
+          {
+            "name": "deviceid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/twin/properties/direct": {
+      "put": {
+        "operationId": "Update Device Twin Properties using a Direct Method",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/twin/tags": {
+      "put": {
+        "operationId": "Update Device Twin Tags",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/twin/properties": {
+      "put": {
+        "operationId": "Update Device Twin Properties",
+        "parameters": [],
+        "responses": {}
+      }
+    }
+  }
+}

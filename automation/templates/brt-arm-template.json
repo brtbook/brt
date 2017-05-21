@@ -1,0 +1,251 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "azureLocation": {
+      "type": "string"
+    },
+    "storageAccountName": {
+      "type": "string"
+    },
+    "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ]
+    },
+    "servicebusNamespace": {
+      "type": "string"
+    },
+    "docDbAccount": {
+      "type": "string"
+    },
+    "iotHubName": {
+      "type": "string"
+    },
+    "sqlServer": {
+      "type": "string"
+    },
+    "sqlAdminUserId": {
+      "type": "string"
+    },
+    "sqlAdminPassword": {
+      "type": "string"
+    },
+    "sqlDatabaseName": {
+      "type": "string"
+    },
+    "firewallRules_AllowAllWindowsAzureIps": {
+      "type": "string"
+    },
+    "prefix":{"type":"string"},
+    "suffix":{"type":"string"}
+  },
+  "variables": {
+    "docDBResourceId": "[resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('docDbAccount'))]",
+    "iotHubResourceId": "[resourceId('Microsoft.Devices/Iothubs', parameters('iotHubName'))]",
+    "iotHubKeyName": "iothubowner",
+    "iotHubVersion": "2015-08-15-preview",
+    "iotHubKeyResource": "[resourceId('Microsoft.Devices/Iothubs/Iothubkeys', parameters('iotHubName'), variables('iotHubKeyName'))]",
+    "sbVersion": "2015-08-01",
+    "archive-blob": "brt-archive-blob",
+    "sensorreadings-sqldb": "brt-sensorreadings-sqldb",
+    "alerts-queue": "brt-alerts-queue",
+    "alarms-queue": "brt-alarms-queue",
+    "sbQueueAlarms": "alarms",
+    "sbQueueAlerts": "alerts",
+    "sql-api-version": "2014-04-01",
+    "sqldb-api-version": "2015-05-01-preview",
+    "sqlfirewallrules-api-version": "2014-04-01"
+  },
+
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[parameters('storageAccountName')]",
+      "apiVersion": "2015-06-15",
+      "location": "[parameters('azureLocation')]",
+      "properties": {
+        "accountType": "[parameters('storageAccountType')]"
+      }
+    },
+    {
+      "apiVersion": "[variables('sbVersion')]",
+      "name": "[parameters('servicebusNamespace')]",
+      "type": "Microsoft.ServiceBus/namespaces",
+      "location": "[parameters('azureLocation')]",
+      "properties": {
+      },
+      "resources": [
+        {
+          "apiVersion": "[variables('sbVersion')]",
+          "name": "[variables('sbQueueAlarms')]",
+          "type": "Queues",
+          "dependsOn": [
+            "[concat('Microsoft.ServiceBus/namespaces/', parameters('servicebusNamespace'))]"
+          ],
+          "properties": {
+            "path": "[variables('sbQueueAlarms')]"
+          }
+        },
+        {
+          "apiVersion": "[variables('sbVersion')]",
+          "name": "[variables('sbQueueAlerts')]",
+          "type": "Queues",
+          "dependsOn": [
+            "[concat('Microsoft.ServiceBus/namespaces/', parameters('servicebusNamespace'))]"
+          ],
+          "properties": {
+            "path": "[variables('sbQueueAlerts')]"
+          }
+        }
+      ]
+    },
+    {
+      "apiVersion": "2015-04-08",
+      "type": "Microsoft.DocumentDb/databaseAccounts",
+      "name": "[parameters('docDbAccount')]",
+      "location": "[parameters('azureLocation')]",
+      "properties": {
+        "name": "[parameters('docDbAccount')]",
+        "databaseAccountOfferType": "Standard"
+      }
+    },
+    {
+      "apiVersion": "2016-02-03",
+      "type": "Microsoft.Devices/IotHubs",
+      "name": "[parameters('iotHubName')]",
+      "location": "[parameters('azureLocation')]",
+      "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "capacity": 1
+      },
+      "properties": {
+        "location": "[parameters('azureLocation')]"
+      }
+    },
+
+    {
+      "apiVersion": "[variables('iotHubVersion')]",
+      "name": "[concat(parameters('iotHubName'), '/events/', variables('archive-blob'))]",
+      "type": "Microsoft.Devices/Iothubs/eventhubEndpoints/ConsumerGroups",
+      "dependsOn": [
+        "[concat('Microsoft.Devices/Iothubs/', parameters('iotHubName'))]"
+      ]
+    },
+
+    {
+      "apiVersion": "[variables('iotHubVersion')]",
+      "name": "[concat(parameters('iotHubName'), '/events/', variables('alerts-queue'))]",
+      "type": "Microsoft.Devices/Iothubs/eventhubEndpoints/ConsumerGroups",
+      "dependsOn": [
+        "[concat('Microsoft.Devices/Iothubs/', parameters('iotHubName'))]"
+      ]
+    },
+
+    {
+      "apiVersion": "[variables('iotHubVersion')]",
+      "name": "[concat(parameters('iotHubName'), '/events/', variables('alarms-queue'))]",
+      "type": "Microsoft.Devices/Iothubs/eventhubEndpoints/ConsumerGroups",
+      "dependsOn": [
+        "[concat('Microsoft.Devices/Iothubs/', parameters('iotHubName'))]"
+      ]
+    },
+
+    {
+      "apiVersion": "[variables('iotHubVersion')]",
+      "name": "[concat(parameters('iotHubName'), '/events/', variables('sensorreadings-sqldb'))]",
+      "type": "Microsoft.Devices/Iothubs/eventhubEndpoints/ConsumerGroups",
+      "dependsOn": [
+        "[concat('Microsoft.Devices/Iothubs/', parameters('iotHubName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Sql/servers",
+      "name": "[parameters('sqlServer')]",
+      "kind": "v12.0",
+      "apiVersion": "2014-04-01-preview",
+      "location": "[parameters('azureLocation')]",
+      "properties": {
+        "administratorLogin": "[parameters('sqlAdminUserId')]",
+        "administratorLoginPassword": "[parameters('sqlAdminPassword')]",
+        "version": "12.0"
+      },
+      "resources": [],
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "name": "[concat(parameters('sqlServer'), concat('/', parameters('sqlDatabaseName')))]",
+      "kind": "v12.0,user",
+      "apiVersion": "2014-04-01-preview",
+      "location": "[parameters('azureLocation')]",
+      "properties": {
+        "databaseId": "b14f2a55-037f-4f3f-b893-6dd99457a994",
+        "edition": "Standard",
+        "status": "Online",
+        "serviceLevelObjective": "S1",
+        "collation": "SQL_Latin1_General_CP1_CI_AS",
+        "maxSizeBytes": "268435456000",
+        "creationDate": "2016-09-19T12:32:45.097Z",
+        "currentServiceObjectiveId": "1b1ebd4d-d903-4baa-97f9-4ea675f5e928",
+        "requestedServiceObjectiveId": "1b1ebd4d-d903-4baa-97f9-4ea675f5e928",
+        "requestedServiceObjectiveName": "S1",
+        "defaultSecondaryLocation": "West US",
+        "earliestRestoreDate": "2016-09-19T12:43:14.467Z",
+        "elasticPoolName": null,
+        "containmentState": 2
+      },
+      "resources": [],
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('sqlServer'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Sql/servers/firewallRules",
+      "kind": "v12.0",
+      "name": "[parameters('firewallRules_AllowAllWindowsAzureIps')]",
+      "apiVersion": "2014-04-01-preview",
+      "location": "[parameters('azureLocation')]",
+      "properties": {
+        "startIpAddress": "0.0.0.0",
+        "endIpAddress": "0.0.0.0"
+      },
+      "resources": [],
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('sqlServer'))]"
+      ]
+    }
+  ],
+  "outputs": {
+    "iotHubHostName": {
+      "type": "string",
+      "value": "[reference(variables('iotHubResourceId')).hostName]"
+    },
+    "iotHubKey": {
+      "type": "string",
+      "value": "[listkeys(variables('iotHubKeyResource'), variables('iotHubVersion')).primaryKey]"
+    },
+    "iotHubConnectionString": {
+      "type": "string",
+      "value": "[concat('HostName=', reference(variables('iotHubResourceId')).hostName, ';SharedAccessKeyName=', variables('iotHubKeyName'), ';SharedAccessKey=', listkeys(variables('iotHubKeyResource'), variables('iotHubVersion')).primaryKey)]"
+    },
+    "docDbURI": {
+      "type": "string",
+      "value": "[reference(variables('docDBResourceId')).documentEndpoint]"
+    },
+    "docDbKey": {
+      "type": "string",
+      "value": "[listkeys(variables('docDBResourceId'), '2015-04-08').primaryMasterKey]"
+    },
+    "docDbConnectionString": {
+      "type": "string",
+      "value": "[concat('AccountEndpoint=', reference(variables('docDBResourceId')).documentEndpoint, ';AccountKey=', listkeys(variables('docDBResourceId'), '2015-04-08').primaryMasterKey)]"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Account.Dev",
+    "version": "1.0"
+  },
+  "host": "[appservice-name].azurewebsites.net",
+  "basePath": "/account",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/subscriptions": {
+      "get": {
+        "operationId": "Get All Accounts",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "operationId": "Create an Account",
+        "parameters": [],
+        "responses": {}
+      },
+      "put": {
+        "operationId": "Update an Account",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/subscriptions/id/{id}": {
+      "get": {
+        "operationId": "Get Account by Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "operationId": "Delete an Account",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/subscriptions/organizationid/{organizationid}": {
+      "get": {
+        "operationId": "Get Account by Organization Id",
+        "parameters": [
+          {
+            "name": "organizationid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  }
+}

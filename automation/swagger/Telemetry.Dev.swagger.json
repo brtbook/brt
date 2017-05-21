@@ -1,0 +1,55 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Telemetry API",
+    "version": "1.0"
+  },
+  "host": "[appservice-name].azurewebsites.net",
+  "basePath": "/telemetry",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/events/companyname/{companyname}": {
+      "get": {
+        "operationId": "Get Telemetry by Company, User Type and User Name",
+        "parameters": [
+          {
+            "name": "companyname",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "usertype",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "number",
+            "enum": [
+              "3",
+              "2"
+            ]
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "enum": [
+              "10"
+            ]
+          }
+        ],
+        "responses": {}
+      }
+    }
+  }
+}

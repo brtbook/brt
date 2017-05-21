@@ -1,0 +1,16 @@
+C:\Users\bob\Source\Repos\brt\microservices\Application\IApplication\bin\Debug\IApplication.dll
+C:\Users\bob\Source\Repos\brt\microservices\Application\IApplication\bin\Debug\IApplication.pdb
+C:\Users\bob\Source\Repos\brt\microservices\Application\IApplication\bin\Debug\ApplicationModels.dll
+C:\Users\bob\Source\Repos\brt\microservices\Application\IApplication\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bob\Source\Repos\brt\microservices\Application\IApplication\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bob\Source\Repos\brt\microservices\Application\IApplication\obj\Debug\IApplication.dll
+C:\Users\bob\Source\Repos\brt\microservices\Application\IApplication\obj\Debug\IApplication.pdb
+C:\Users\bob\Source\Repos\brt\microservices\Application\IApplication\obj\Debug\IApplication.csprojResolveAssemblyReference.cache
+C:\Users\bobfa\Source\Repos\brt\microservices\Application\IApplication\bin\Debug\IApplication.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Application\IApplication\bin\Debug\IApplication.pdb
+C:\Users\bobfa\Source\Repos\brt\microservices\Application\IApplication\bin\Debug\ApplicationModels.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Application\IApplication\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Application\IApplication\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bobfa\Source\Repos\brt\microservices\Application\IApplication\obj\Debug\IApplication.csprojResolveAssemblyReference.cache
+C:\Users\bobfa\Source\Repos\brt\microservices\Application\IApplication\obj\Debug\IApplication.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Application\IApplication\obj\Debug\IApplication.pdb

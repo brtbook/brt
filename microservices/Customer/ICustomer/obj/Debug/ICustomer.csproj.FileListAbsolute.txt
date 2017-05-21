@@ -1,0 +1,16 @@
+C:\Users\bob\Source\Repos\brt\microservices\Customer\ICustomer\bin\Debug\ICustomer.dll
+C:\Users\bob\Source\Repos\brt\microservices\Customer\ICustomer\bin\Debug\ICustomer.pdb
+C:\Users\bob\Source\Repos\brt\microservices\Customer\ICustomer\bin\Debug\CustomerModels.dll
+C:\Users\bob\Source\Repos\brt\microservices\Customer\ICustomer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bob\Source\Repos\brt\microservices\Customer\ICustomer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bob\Source\Repos\brt\microservices\Customer\ICustomer\obj\Debug\ICustomer.csprojResolveAssemblyReference.cache
+C:\Users\bob\Source\Repos\brt\microservices\Customer\ICustomer\obj\Debug\ICustomer.dll
+C:\Users\bob\Source\Repos\brt\microservices\Customer\ICustomer\obj\Debug\ICustomer.pdb
+C:\Users\bobfa\Source\Repos\brt\microservices\Customer\ICustomer\bin\Debug\ICustomer.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Customer\ICustomer\bin\Debug\ICustomer.pdb
+C:\Users\bobfa\Source\Repos\brt\microservices\Customer\ICustomer\bin\Debug\CustomerModels.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Customer\ICustomer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Customer\ICustomer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bobfa\Source\Repos\brt\microservices\Customer\ICustomer\obj\Debug\ICustomer.csprojResolveAssemblyReference.cache
+C:\Users\bobfa\Source\Repos\brt\microservices\Customer\ICustomer\obj\Debug\ICustomer.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Customer\ICustomer\obj\Debug\ICustomer.pdb

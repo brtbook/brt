@@ -1,0 +1,66 @@
+﻿@using System.Security.Claims
+@using brt.Models.Telemetry
+@{
+    ViewBag.Title = "Claims";
+}
+<h2>@ViewBag.Title</h2>
+
+<h4>Claims Present in the Claims Identity: @ViewBag.DisplayName</h4>
+
+<table class="table-hover claim-table">
+    <tr>
+        <th class="claim-type claim-data claim-head">Claim Type</th>
+        <th class="claim-data claim-head">Claim Value</th>
+    </tr>
+
+    @foreach (Claim claim in ClaimsPrincipal.Current.Claims)
+    {
+        <tr>
+            <td class="claim-type claim-data">@claim.Type</td>
+            <td class="claim-data">@claim.Value</td>
+        </tr>
+    }
+</table>
+<br/>
+<table>
+    <tr>
+        <td class="claim-data">Lastname</td>
+        <td class="claim-data">Age</td>
+        <td class="claim-data">Weight</td>
+        <td class="claim-data">Height</td>
+        <td class="claim-data">Activity</td>
+        <td class="claim-data">Altitude</td>
+        <td class="claim-data">Breathing Rate</td>
+        <td class="claim-data">Cadence</td>
+        <td class="claim-data">Heart Rate</td>
+        <td class="claim-data">Red Zone</td>
+        <td class="claim-data">Variability</td>
+        <td class="claim-data">Speed</td>
+        <td class="claim-data">Steps</td>
+        <td class="claim-data">Temperature</td>
+        <td class="claim-data">Velocity</td>
+        <td class="claim-data">Ventilization</td>        
+    </tr>
+
+    @foreach (UserTelemetry telemetry in ViewBag.Telemetry)
+    {
+        <tr>
+            <td class="claim-data">@telemetry.User.lastname</td>
+            <td class="claim-data">@telemetry.Readings.age</td>
+            <td class="claim-data">@telemetry.Readings.weight</td>
+            <td class="claim-data">@telemetry.Readings.height</td>
+            <td class="claim-data">@telemetry.Readings.activity</td>
+            <td class="claim-data">@telemetry.Readings.altitude</td>
+            <td class="claim-data">@telemetry.Readings.breathingRate</td>
+            <td class="claim-data">@telemetry.Readings.cadence</td>
+            <td class="claim-data">@telemetry.Readings.heartRateBPM</td>
+            <td class="claim-data">@telemetry.Readings.heartRateRedZone</td>
+            <td class="claim-data">@telemetry.Readings.heartrateVariability</td>
+            <td class="claim-data">@telemetry.Readings.speed</td>
+            <td class="claim-data">@telemetry.Readings.steps</td>
+            <td class="claim-data">@telemetry.Readings.temperature</td>
+            <td class="claim-data">@telemetry.Readings.velocity</td>
+            <td class="claim-data">@telemetry.Readings.ventilization</td>
+        </tr>
+    }
+</table>  

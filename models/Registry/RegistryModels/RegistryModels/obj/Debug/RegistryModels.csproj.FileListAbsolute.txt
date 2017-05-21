@@ -1,0 +1,13 @@
+C:\Users\bob\Source\Repos\brt\models\Registry\RegistryModels\RegistryModels\bin\Debug\RegistryModels.dll
+C:\Users\bob\Source\Repos\brt\models\Registry\RegistryModels\RegistryModels\bin\Debug\RegistryModels.pdb
+C:\Users\bob\Source\Repos\brt\models\Registry\RegistryModels\RegistryModels\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bob\Source\Repos\brt\models\Registry\RegistryModels\RegistryModels\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bob\Source\Repos\brt\models\Registry\RegistryModels\RegistryModels\obj\Debug\RegistryModels.dll
+C:\Users\bob\Source\Repos\brt\models\Registry\RegistryModels\RegistryModels\obj\Debug\RegistryModels.pdb
+C:\Users\bobfa\Source\Repos\brt\models\Registry\RegistryModels\RegistryModels\bin\Debug\RegistryModels.dll
+C:\Users\bobfa\Source\Repos\brt\models\Registry\RegistryModels\RegistryModels\bin\Debug\RegistryModels.pdb
+C:\Users\bobfa\Source\Repos\brt\models\Registry\RegistryModels\RegistryModels\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bobfa\Source\Repos\brt\models\Registry\RegistryModels\RegistryModels\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bobfa\Source\Repos\brt\models\Registry\RegistryModels\RegistryModels\obj\Debug\RegistryModels.csprojResolveAssemblyReference.cache
+C:\Users\bobfa\Source\Repos\brt\models\Registry\RegistryModels\RegistryModels\obj\Debug\RegistryModels.dll
+C:\Users\bobfa\Source\Repos\brt\models\Registry\RegistryModels\RegistryModels\obj\Debug\RegistryModels.pdb

@@ -1,0 +1,15 @@
+{
+  "name": "device-node",
+  "version": "1.0.0",
+  "description": "managed device example",
+  "main": "device.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bob Familiar",
+  "license": "ISC",
+  "dependencies": {
+    "azure-iot-device": "^1.1.7",
+    "azure-iot-device-mqtt": "^1.1.7"
+  }
+}

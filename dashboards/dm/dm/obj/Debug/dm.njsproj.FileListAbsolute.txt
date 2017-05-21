@@ -1,0 +1,1 @@
+C:\Users\bob\Source\Repos\brt\dashboards\dm2\dm\dm\bin\Microsoft.NodejsTools.WebRole.dll

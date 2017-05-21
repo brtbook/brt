@@ -1,0 +1,27 @@
+﻿extends layout
+
+block content
+  h1 Business in Real-Time
+  h2 Manage Your Connected Team
+  #companyList(style="width: 10vw")
+    select(id="companyList" onchange="GetDevices(this)")
+    br
+    br
+  #deviceList(style="height: 50vh;")
+    table
+      thead
+        th(style="width: 20vw; text-align: left") Serial Number
+        |        
+        th(style="width: 10vw; text-align: left") Model
+        |        
+        th(style="width: 10vw; text-align: left") Heartbeat
+        |     
+        th(style="width: 10vw; text-align: left") Telemetry
+        |     
+        th(style="width: 10vw; text-align: left") Reboot
+        |     
+        th(style="width: 10vw; text-align: left") Upgrade
+        |     
+        th(style="width: 10vw; text-align: left") Configure
+      tbody
+

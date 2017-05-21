@@ -1,0 +1,74 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Reference.Dev",
+    "version": "1.0"
+  },
+  "host": "[appservice-name].azurewebsites.net",
+  "basePath": "/reference",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/entities/domain/{domain}": {
+      "get": {
+        "operationId": "Get Reference Entities by Domain",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/entities/code/{code}": {
+      "get": {
+        "operationId": "Get Reference Entities by Code",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/entities/codevalue/{codevalue}": {
+      "get": {
+        "operationId": "Get Entities by Code Value",
+        "parameters": [
+          {
+            "name": "codevalue",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/entities/link/{link}": {
+      "get": {
+        "operationId": "Get Entities by Link",
+        "parameters": [
+          {
+            "name": "link",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  }
+}

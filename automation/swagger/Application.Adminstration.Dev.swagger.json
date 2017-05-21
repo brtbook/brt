@@ -1,0 +1,59 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Application.Adminstration.Dev",
+    "version": "1.0"
+  },
+  "host": "[appservice-name].azurewebsites.net",
+  "basePath": "/application/admin",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/configurations": {
+      "get": {
+        "operationId": "Get All Application Configurations",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "operationId": "Create an Application Configuration",
+        "parameters": [],
+        "responses": {}
+      },
+      "put": {
+        "operationId": "Update an Application Configuration",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/configurations/id/{id}": {
+      "get": {
+        "operationId": "Get an Application Configuration by Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "operationId": "Delete an Application Configuration",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  }
+}

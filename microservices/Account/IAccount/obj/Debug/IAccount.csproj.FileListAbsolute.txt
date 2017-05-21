@@ -1,0 +1,16 @@
+C:\Users\bob\Source\Repos\brt\microservices\Account\IAccount\bin\Debug\IAccount.dll
+C:\Users\bob\Source\Repos\brt\microservices\Account\IAccount\bin\Debug\IAccount.pdb
+C:\Users\bob\Source\Repos\brt\microservices\Account\IAccount\bin\Debug\AccountModels.dll
+C:\Users\bob\Source\Repos\brt\microservices\Account\IAccount\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bob\Source\Repos\brt\microservices\Account\IAccount\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bob\Source\Repos\brt\microservices\Account\IAccount\obj\Debug\IAccount.csprojResolveAssemblyReference.cache
+C:\Users\bob\Source\Repos\brt\microservices\Account\IAccount\obj\Debug\IAccount.dll
+C:\Users\bob\Source\Repos\brt\microservices\Account\IAccount\obj\Debug\IAccount.pdb
+C:\Users\bobfa\Source\Repos\brt\microservices\Account\IAccount\bin\Debug\IAccount.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Account\IAccount\bin\Debug\IAccount.pdb
+C:\Users\bobfa\Source\Repos\brt\microservices\Account\IAccount\bin\Debug\AccountModels.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Account\IAccount\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Account\IAccount\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bobfa\Source\Repos\brt\microservices\Account\IAccount\obj\Debug\IAccount.csprojResolveAssemblyReference.cache
+C:\Users\bobfa\Source\Repos\brt\microservices\Account\IAccount\obj\Debug\IAccount.dll
+C:\Users\bobfa\Source\Repos\brt\microservices\Account\IAccount\obj\Debug\IAccount.pdb
