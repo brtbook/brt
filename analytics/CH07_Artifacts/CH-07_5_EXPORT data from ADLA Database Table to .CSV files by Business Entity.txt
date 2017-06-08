@@ -1,0 +1,25 @@
+EXPORT data from ADLA Database Table to .CSV files by Business Entity
+
+ Export #1 - WigiTech
+@table1 = SELECT  FROM [IOTStreamingDataMLHistoryDB].[dbo].[StreamingDataMLHistory]
+WHERE companyname ==WigiTech;
+
+OUTPUT @table1
+    TO outputStreamingDataMLHistory-WigiTech.Csv
+    USING Outputters.Csv();
+
+ Export #2 - Tall Towers
+@table2 = SELECT  FROM [IOTStreamingDataMLHistoryDB].[dbo].[StreamingDataMLHistory]
+WHERE companyname ==Tall Towers;
+
+OUTPUT @table2
+    TO outputStreamingDataMLHistory-Tall-Towers.Csv
+    USING Outputters.Csv();
+
+ Export #3 - The Complicated Badger
+@table3 = SELECT  FROM [IOTStreamingDataMLHistoryDB].[dbo].[StreamingDataMLHistory]
+WHERE companyname ==The Complicated Badger;
+
+OUTPUT @table3
+    TO outputStreamingDataMLHistory-The-Complicated-Badger.Csv
+    USING Outputters.Csv();

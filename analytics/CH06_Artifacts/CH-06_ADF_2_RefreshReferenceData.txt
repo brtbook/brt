@@ -1,0 +1,407 @@
+Linked services
+
+{
+    "name": "Destination-BlobStorage",
+    "properties": {
+        "hubName": "refreshreferencedata_hub",
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=brtblobstoragedev;AccountKey=**********"
+        }
+    }
+}
+
+{
+    "name": "Source-DocumentDb",
+    "properties": {
+        "hubName": "refreshreferencedata_hub",
+        "type": "DocumentDb",
+        "typeProperties": {
+            "connectionString": "accountendpoint=https://brtdocdbdev.documents.azure.com:443;accountkey=**********;database=Registry"
+        }
+    }
+}
+
+
+Datasets
+{
+    "name": "InputDataset-cdw",
+    "properties": {
+        "structure": [
+            {
+                "name": "authid",
+                "type": "String"
+            },
+            {
+                "name": "companyname",
+                "type": "String"
+            },
+            {
+                "name": "firstname",
+                "type": "String"
+            },
+            {
+                "name": "lastname",
+                "type": "String"
+            },
+            {
+                "name": "username",
+                "type": "String"
+            },
+            {
+                "name": "imageUrl",
+                "type": "String"
+            },
+            {
+                "name": "type",
+                "type": "Int64"
+            },
+            {
+                "name": "address1",
+                "type": "String"
+            },
+            {
+                "name": "address2",
+                "type": "String"
+            },
+            {
+                "name": "address3",
+                "type": "String"
+            },
+            {
+                "name": "city",
+                "type": "String"
+            },
+            {
+                "name": "state",
+                "type": "String"
+            },
+            {
+                "name": "zip",
+                "type": "String"
+            },
+            {
+                "name": "country",
+                "type": "String"
+            },
+            {
+                "name": "phone",
+                "type": "String"
+            },
+            {
+                "name": "email",
+                "type": "String"
+            },
+            {
+                "name": "linkedin",
+                "type": "String"
+            },
+            {
+                "name": "facebook",
+                "type": "String"
+            },
+            {
+                "name": "twitter",
+                "type": "String"
+            },
+            {
+                "name": "blog",
+                "type": "String"
+            },
+            {
+                "name": "age",
+                "type": "Int64"
+            },
+            {
+                "name": "height",
+                "type": "Int64"
+            },
+            {
+                "name": "weight",
+                "type": "Int64"
+            },
+            {
+                "name": "gender",
+                "type": "Int64"
+            },
+            {
+                "name": "race",
+                "type": "Int64"
+            },
+            {
+                "name": "longitude",
+                "type": "Double"
+            },
+            {
+                "name": "latitude",
+                "type": "Double"
+            },
+            {
+                "name": "id",
+                "type": "String"
+            },
+            {
+                "name": "cachettl",
+                "type": "Int64"
+            },
+            {
+                "name": "_rid",
+                "type": "String"
+            },
+            {
+                "name": "_self",
+                "type": "String"
+            },
+            {
+                "name": "_etag",
+                "type": "String"
+            },
+            {
+                "name": "_attachments",
+                "type": "String"
+            },
+            {
+                "name": "_ts",
+                "type": "Int64"
+            }
+        ],
+        "published": false,
+        "type": "DocumentDbCollection",
+        "linkedServiceName": "Source-DocumentDb",
+        "typeProperties": {
+            "collectionName": "Profile"
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {}
+    }
+}
+
+{
+    "name": "OutputDataset-cdw",
+    "properties": {
+        "structure": [
+            {
+                "name": "authid",
+                "type": "String"
+            },
+            {
+                "name": "companyname",
+                "type": "String"
+            },
+            {
+                "name": "firstname",
+                "type": "String"
+            },
+            {
+                "name": "lastname",
+                "type": "String"
+            },
+            {
+                "name": "username",
+                "type": "String"
+            },
+            {
+                "name": "imageUrl",
+                "type": "String"
+            },
+            {
+                "name": "type",
+                "type": "Int64"
+            },
+            {
+                "name": "address1",
+                "type": "String"
+            },
+            {
+                "name": "address2",
+                "type": "String"
+            },
+            {
+                "name": "address3",
+                "type": "String"
+            },
+            {
+                "name": "city",
+                "type": "String"
+            },
+            {
+                "name": "state",
+                "type": "String"
+            },
+            {
+                "name": "zip",
+                "type": "String"
+            },
+            {
+                "name": "country",
+                "type": "String"
+            },
+            {
+                "name": "phone",
+                "type": "String"
+            },
+            {
+                "name": "email",
+                "type": "String"
+            },
+            {
+                "name": "linkedin",
+                "type": "String"
+            },
+            {
+                "name": "facebook",
+                "type": "String"
+            },
+            {
+                "name": "twitter",
+                "type": "String"
+            },
+            {
+                "name": "blog",
+                "type": "String"
+            },
+            {
+                "name": "age",
+                "type": "Int64"
+            },
+            {
+                "name": "height",
+                "type": "Int64"
+            },
+            {
+                "name": "weight",
+                "type": "Int64"
+            },
+            {
+                "name": "gender",
+                "type": "Int64"
+            },
+            {
+                "name": "race",
+                "type": "Int64"
+            },
+            {
+                "name": "longitude",
+                "type": "Double"
+            },
+            {
+                "name": "latitude",
+                "type": "Double"
+            },
+            {
+                "name": "id",
+                "type": "String"
+            },
+            {
+                "name": "cachettl",
+                "type": "Int64"
+            },
+            {
+                "name": "_rid",
+                "type": "String"
+            },
+            {
+                "name": "_self",
+                "type": "String"
+            },
+            {
+                "name": "_etag",
+                "type": "String"
+            },
+            {
+                "name": "_attachments",
+                "type": "String"
+            },
+            {
+                "name": "_ts",
+                "type": "Int64"
+            }
+        ],
+        "published": false,
+        "type": "AzureBlob",
+        "linkedServiceName": "Destination-BlobStorage",
+        "typeProperties": {
+            "fileName": "TeamReferenceData{slice}.csv",
+            "folderPath": "refdata-team",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ",",
+                "firstRowAsHeader": true
+            },
+            "partitionedBy": [
+                {
+                    "name": "slice",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "yyyy-MM-ddhh-mm"
+                    }
+                }
+            ]
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": false,
+        "policy": {}
+    }
+}
+
+Pipelines
+{
+    "name": "CopyReferenceData",
+    "properties": {
+        "description": "CopyReferenceData",
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "DocumentDbCollectionSource",
+                        "query": "SELECT \nc.authid,\nc.companyname, \nc.firstname, \nc.lastname, \nc.username, \nc.imageUrl, \nc.type, \nc.address.address1, \nc.address.address2, \nc.address.address3, \nc.address.city, \nc.address.state, \nc.address.zip, \nc.address.country, \nc.social.phone, \nc.social.email, \nc.social.linkedin, \nc.social.facebook, \nc.social.twitter, \nc.social.blog, \nc.healthInformation.age, \nc.healthInformation.height, \nc.healthInformation.weight, \nc.healthInformation.gender, \nc.healthInformation.race, \nc.location.longitude, \nc.location.latitude, \nc.id, \nc.cachettl, \nc._rid, \nc._self, \nc._etag, \nc._attachments, \nc._ts\nFROM\nc\nWHERE\nc.type <> 1",
+                        "nestingSeparator": "."
+                    },
+                    "sink": {
+                        "type": "BlobSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "InputDataset-cdw"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset-cdw"
+                    }
+                ],
+                "policy": {
+                    "timeout": "1.00:00:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "style": "StartOfInterval",
+                    "retry": 3,
+                    "longRetry": 0,
+                    "longRetryInterval": "00:00:00"
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "Profile->TeamReferenceData_csv"
+            }
+        ],
+        "start": "2016-11-28T03:20:30.913Z",
+        "end": "2099-12-31T05:00:00Z",
+        "isPaused": false,
+        "hubName": "refreshreferencedata_hub",
+        "pipelineMode": "Scheduled"
+    }
+}

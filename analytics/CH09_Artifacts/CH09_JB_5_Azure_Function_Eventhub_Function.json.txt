@@ -1,0 +1,31 @@
+{
+  "eventHub": {
+    "maxBatchSize": 64,
+    "prefetchCount": 256
+    },
+  "bindings": [
+    {
+      "type": "eventHubTrigger",
+      "name": "myEventHubMessage",
+      "direction": "in",
+      "path": "brtalarm",
+      "connection": "brtAlarmConnection"
+    },
+    {
+      "type": "twilioSms",
+      "name": "message",
+      "accountSid": "TwilioAccountSid",
+      "authToken": "TwilioAuthToken",
+      "from": "+15005550006",
+      "direction": "out"
+    },
+    {
+      "type": "sendGrid",
+      "name": "sendgridmessage",
+      "apiKey": "SendGridApiKey",
+      "from": "AzureAlerts@TallTowers.com",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}

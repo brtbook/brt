@@ -1,0 +1,13 @@
+# LOAD the ggplot2 package
+library(ggplot2)
+
+# RENDER the ggplot2 Visual 
+ggplot(data=dataset,aes(x=Temperature)) + geom_freqpoly(color="orange")
+
+
+# LOAD the ggplot2 package
+library(ggplot2)
+
+# RENDER the ggplot2 Visual 
+ggplot(data=dataset,aes(x=Temperature)) + geom_freqpoly(color="blue")
+

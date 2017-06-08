@@ -1,0 +1,23 @@
+# Trainer R Script
+# Input: dataset
+# Output: model
+
+# e1071 = pre-installed R package in the Azure Machine Learning environment for Binary Classification
+library(e1071)
+
+# The next three lines get the feature columns and the label column from the dataset, 
+# and combine them into a new R data frame that is named train.data:
+features <- get.feature.columns(dataset)
+labels   <- as.factor(get.label.column(dataset))
+train.data <- data.frame(features, labels)
+
+# The predefined function, get.feature.columns(), selects the columns that were designated as features in the metadata for dataset.
+feature.names <- get.feature.column.names(dataset)
+
+# the predefined function, get.feature.column.names(dataset), is used to get feature column names from the dataset. Those names are designated
+# as the names for columns in train.data.
+# a temporary name Class is created for the label column.
+names(train.data) <- c(feature.names, "Class")
+
+# Train the "Naïve Bayes" classifier algorithm by using the labels and features in the train.data data frame.
+model <- naiveBayes(Class ~ ., train.data)

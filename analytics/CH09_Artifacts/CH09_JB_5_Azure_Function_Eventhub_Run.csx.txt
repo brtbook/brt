@@ -1,0 +1,93 @@
+#r "Microsoft.ServiceBus"
+#r "Newtonsoft.Json"
+#r "Twilio.Api"
+#r "SendGrid"
+#r "Microsoft.Azure.WebJobs.Extensions.SendGrid"
+
+using System;
+using Microsoft.ServiceBus.Messaging;
+using Newtonsoft.Json;
+using Twilio;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+
+public static void Run(string myEventHubMessage, out SMSMessage message, out Mail sendgridmessage, TraceWriter log)
+{
+string jsonContent = myEventHubMessage.ToString();
+
+string eventtime = "";
+string uname = ""; 
+string adminph = "";
+string admemail = "";
+
+EventHubMessage jbEventHubMessage = new EventHubMessage();
+
+try  
+{  
+    
+    EventHubData alert = JsonConvert.DeserializeObject<EventHubData>(jsonContent);
+ 
+    eventtime = alert.timerstamp;
+    uname = alert.username; 
+    adminph = alert.adminphone;
+    admemail = alert.adminemail;
+    log.Info($"Converted JSON for: " + jsonContent);
+}  
+catch (Exception e)
+{
+    log.Info($"Failed to Convert Single JSON record for: " + jsonContent);
+    List<EventHubData> alerts = (List<EventHubData>)Newtonsoft.Json.JsonConvert.DeserializeObject(jsonContent, typeof(List<EventHubData>));
+    log.Info($"SUCCESS Converted MULTI JSON record for: " + jsonContent);
+    log.Info($"alerts.ToString=: " + alerts.ToString());
+}
+ 
+ //Send SMS TEXT ALERT via Twilio API
+message = new SMSMessage();
+message.Body = "Team Member " + uname + " Exhaustion Alert at: " + eventtime;
+message.From = "+15005550006";
+message.To = adminph;
+
+//Send EMAIL ALERT via SendGrid API
+var personalization = new Personalization();
+personalization.AddTo(new Email("jbarnes_1@hotmail.com;"));
+string subject = "ALERT NOTIFICATION - Team Member " + uname + " Exhaustion Alert received at: " + eventtime;
+var messageContent = new Content("text/html", "ALERT NOTIFICATION - Team Member " + uname + " Exhaustion Alert received at: " + eventtime);
+sendgridmessage = new Mail();
+sendgridmessage.Subject = subject;
+sendgridmessage.AddContent(messageContent);
+sendgridmessage.AddPersonalization(personalization);
+
+log.Info($"Processed ALERT Event for: {uname}");
+}
+[JsonObjectAttribute]
+public class EventHubData
+{
+    [JsonProperty("timerstamp")]
+    public string timerstamp { get; set; }
+    [JsonProperty("username")]
+    public string username { get; set; }
+    [JsonProperty("adminphone")]
+    public string adminphone { get; set; }
+    [JsonProperty("adminemail")]
+    public string adminemail { get; set; }
+}
+
+[JsonObjectAttribute]
+public class EventHubMessage
+{
+    [JsonProperty]
+    public List<EventHubMsgRow> EventHubMsgs { get; set; }
+}
+[JsonObjectAttribute]
+public class EventHubMsgRow
+{
+    [JsonProperty]
+    public string timerstamp { get; set; }
+    [JsonProperty]
+    public string username { get; set; }
+    [JsonProperty]
+    public string adminphone { get; set; }
+    [JsonProperty]
+    public string adminemail { get; set; }
+}
+

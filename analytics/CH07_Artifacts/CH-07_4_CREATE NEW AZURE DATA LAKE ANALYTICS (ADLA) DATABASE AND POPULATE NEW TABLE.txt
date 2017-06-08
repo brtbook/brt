@@ -1,0 +1,109 @@
+//(1) JOIN the streaming data with the ML Results data
+@joindata1 =
+    SELECT 
+            s.userid,      
+            s.age,         
+            s.height,      
+            s.weight,      
+            s.heartratebpm,    
+            s.breathingrate,   
+            s.temperature, 
+            s.steps,       
+            s.velocity,    
+            s.altitude,    
+            s.ventilization,   
+            s.activity,    
+            s.cadence,     
+            s.speed,       
+            s.hib,         
+            s.heartrateredzone,    
+            s.heartratevariability,    
+            s.status,     
+            s.id,         
+            s.deviceid,   
+            s.messagetype, 
+            s.longitude,   
+            s.latitude,    
+            s.timestamp,   
+            s.eventprocessedutctime,   
+            s.partitionid, 
+            s.eventenqueuedutctime, 
+            s.firstname,   
+            s.lastname,    
+            s.username,    
+            s.utype,        
+            s.phone,       
+            s.email,       
+            s.gender,      
+            s.race,
+            m.mluserid,
+            m.mltimestamp,
+            m.scoredlabels,
+            m.scoredprob
+
+    FROM @streamingdata AS s 
+        LEFT JOIN @streamingmldata AS m
+                    ON s.timestamp == m.mltimestamp
+                    AND s.userid == m.mluserid;
+
+//(2) JOIN the NEW streaming data + ML data by USER to GET the Associated COMPANY 
+@joindata2 =
+    SELECT 
+            j.userid,      
+            j.age,         
+            j.height,      
+            j.weight,      
+            j.heartratebpm,    
+            j.breathingrate,   
+            j.temperature, 
+            j.steps,       
+            j.velocity,    
+            j.altitude,    
+            j.ventilization,   
+            j.activity,    
+            j.cadence,     
+            j.speed,       
+            j.hib,         
+            j.heartrateredzone,    
+            j.heartratevariability,    
+            j.status,     
+            j.id,         
+            j.deviceid,   
+            j.messagetype, 
+            j.longitude,   
+            j.latitude,    
+            j.timestamp,   
+            j.eventprocessedutctime,   
+            j.partitionid, 
+            j.eventenqueuedutctime, 
+            j.firstname,   
+            j.lastname,    
+            j.username,    
+            j.utype,        
+            j.phone,       
+            j.email,       
+            j.gender,
+            j.mluserid,
+            j.mltimestamp,
+            j.scoredlabels,
+            j.scoredprob,      
+            j.race,
+            r.companyname,
+            r.rid
+
+    FROM @joindata1 AS j 
+       LEFT JOIN @refdatateamdata AS r
+                    ON j.userid == r.rid;
+
+OUTPUT @joindata2   
+    TO "/output/SQLJoinTestResults.csv"
+    USING Outputters.Csv();
+
+DROP DATABASE IF EXISTS IOTStreamingDataMLHistoryDB; 
+CREATE DATABASE IOTStreamingDataMLHistoryDB; 
+USE DATABASE IOTStreamingDataMLHistoryDB;
+
+CREATE TABLE StreamingDataMLHistory(    
+			INDEX sl_idx CLUSTERED (userid ASC)            
+			PARTITIONED BY HASH (userid) ) 
+			AS SELECT * FROM @joindata2 AS S; // Note: Automatic Table Schema generation

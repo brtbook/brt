@@ -1,0 +1,460 @@
+PopulateAzureSQLDBs
+Linked services
+{
+    "name": "Destination-SQLAzure-f0g",
+    "properties": {
+        "hubName": "populateazuresqldbs_hub",
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": "Data Source=brtsqlserverdev.database.windows.net;Initial Catalog=IOTDataMLHistory-WigiTech;Integrated Security=False;User ID=BrtAdminDev;Password=**********;Connect Timeout=30;Encrypt=True"
+        }
+    }
+}
+{
+    "name": "Source-DataLakeStore-f0g",
+    "properties": {
+        "hubName": "populateazuresqldbs_hub",
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://brtadls.azuredatalakestore.net/webhdfs/v1",
+            "authorization": "**********",
+            "sessionId": "**********",
+            "subscriptionId": "ba3e3785-1e64-4e12-a03e-163e4aab3e53",
+            "resourceGroupName": "brtwhdev"
+        }
+    }
+}
+
+Datasets
+
+{
+    "name": "InputDataset-f0g",
+    "properties": {
+        "structure": [
+            {
+                "name": "Column0",
+                "type": "String"
+            },
+            {
+                "name": "Column1",
+                "type": "Int64"
+            },
+            {
+                "name": "Column2",
+                "type": "Int64"
+            },
+            {
+                "name": "Column3",
+                "type": "Int64"
+            },
+            {
+                "name": "Column4",
+                "type": "Int64"
+            },
+            {
+                "name": "Column5",
+                "type": "Double"
+            },
+            {
+                "name": "Column6",
+                "type": "Double"
+            },
+            {
+                "name": "Column7",
+                "type": "Int64"
+            },
+            {
+                "name": "Column8",
+                "type": "Double"
+            },
+            {
+                "name": "Column9",
+                "type": "Int64"
+            },
+            {
+                "name": "Column10",
+                "type": "Double"
+            },
+            {
+                "name": "Column11",
+                "type": "Double"
+            },
+            {
+                "name": "Column12",
+                "type": "Int64"
+            },
+            {
+                "name": "Column13",
+                "type": "Int64"
+            },
+            {
+                "name": "Column14",
+                "type": "Int64"
+            },
+            {
+                "name": "Column15",
+                "type": "Int64"
+            },
+            {
+                "name": "Column16",
+                "type": "Int64"
+            },
+            {
+                "name": "Column17",
+                "type": "Int64"
+            },
+            {
+                "name": "Column18",
+                "type": "String"
+            },
+            {
+                "name": "Column19",
+                "type": "String"
+            },
+            {
+                "name": "Column20",
+                "type": "Int64"
+            },
+            {
+                "name": "Column21",
+                "type": "Double"
+            },
+            {
+                "name": "Column22",
+                "type": "Double"
+            },
+            {
+                "name": "Column23",
+                "type": "Datetime"
+            },
+            {
+                "name": "Column24",
+                "type": "Datetime"
+            },
+            {
+                "name": "Column25",
+                "type": "Int64"
+            },
+            {
+                "name": "Column26",
+                "type": "Datetime"
+            },
+            {
+                "name": "Column27",
+                "type": "String"
+            },
+            {
+                "name": "Column28",
+                "type": "String"
+            },
+            {
+                "name": "Column29",
+                "type": "String"
+            },
+            {
+                "name": "Column30",
+                "type": "Int64"
+            },
+            {
+                "name": "Column31",
+                "type": "Int64"
+            },
+            {
+                "name": "Column32",
+                "type": "String"
+            },
+            {
+                "name": "Column33",
+                "type": "Int64"
+            },
+            {
+                "name": "Column34",
+                "type": "String"
+            },
+            {
+                "name": "Column35",
+                "type": "Datetime"
+            },
+            {
+                "name": "Column36",
+                "type": "String"
+            },
+            {
+                "name": "Column37",
+                "type": "Double"
+            },
+            {
+                "name": "Column38",
+                "type": "Int64"
+            },
+            {
+                "name": "Column39",
+                "type": "String"
+            },
+            {
+                "name": "Column40",
+                "type": "String"
+            }
+        ],
+        "published": false,
+        "type": "AzureDataLakeStore",
+        "linkedServiceName": "Source-DataLakeStore-f0g",
+        "typeProperties": {
+            "fileName": "StreamingDataMLHistory-WigiTech.Csv",
+            "folderPath": "output/",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ",",
+                "quoteChar": "\""
+            }
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {}
+    }
+}
+
+{
+    "name": "OutputDataset-f0g",
+    "properties": {
+        "structure": [
+            {
+                "name": "UserId",
+                "type": "String"
+            },
+            {
+                "name": "Age",
+                "type": "Double"
+            },
+            {
+                "name": "Height",
+                "type": "Double"
+            },
+            {
+                "name": "Weight",
+                "type": "Double"
+            },
+            {
+                "name": "HeartRateBPM",
+                "type": "Double"
+            },
+            {
+                "name": "BreathingRate",
+                "type": "Double"
+            },
+            {
+                "name": "Temperature",
+                "type": "Double"
+            },
+            {
+                "name": "Steps",
+                "type": "Double"
+            },
+            {
+                "name": "Velocity",
+                "type": "Double"
+            },
+            {
+                "name": "Altitude",
+                "type": "Double"
+            },
+            {
+                "name": "Ventilization",
+                "type": "Double"
+            },
+            {
+                "name": "Activity",
+                "type": "Double"
+            },
+            {
+                "name": "Cadence",
+                "type": "Double"
+            },
+            {
+                "name": "Speed",
+                "type": "Double"
+            },
+            {
+                "name": "HIB",
+                "type": "Double"
+            },
+            {
+                "name": "HeartRateRedZone",
+                "type": "Double"
+            },
+            {
+                "name": "HeartrateVariability",
+                "type": "Double"
+            },
+            {
+                "name": "Status",
+                "type": "Int32"
+            },
+            {
+                "name": "Id",
+                "type": "String"
+            },
+            {
+                "name": "DeviceId",
+                "type": "String"
+            },
+            {
+                "name": "MessageType",
+                "type": "Int32"
+            },
+            {
+                "name": "Longitude",
+                "type": "Double"
+            },
+            {
+                "name": "Latitude",
+                "type": "Double"
+            },
+            {
+                "name": "Timestamp",
+                "type": "Datetime"
+            },
+            {
+                "name": "EventProcessedUtcTime",
+                "type": "Datetime"
+            },
+            {
+                "name": "PartitionId",
+                "type": "Int32"
+            },
+            {
+                "name": "EventEnqueuedUtcTime",
+                "type": "Datetime"
+            },
+            {
+                "name": "FirstName",
+                "type": "String"
+            },
+            {
+                "name": "LastName",
+                "type": "String"
+            },
+            {
+                "name": "UserName",
+                "type": "String"
+            },
+            {
+                "name": "UType",
+                "type": "String"
+            },
+            {
+                "name": "Phone",
+                "type": "String"
+            },
+            {
+                "name": "Email",
+                "type": "String"
+            },
+            {
+                "name": "Gender",
+                "type": "String"
+            },
+            {
+                "name": "MLUserid",
+                "type": "String"
+            },
+            {
+                "name": "MLTimestamp",
+                "type": "String"
+            },
+            {
+                "name": "ScoredLabels",
+                "type": "String"
+            },
+            {
+                "name": "ScoredProb",
+                "type": "Double"
+            },
+            {
+                "name": "Race",
+                "type": "Int32"
+            },
+            {
+                "name": "CompanyName",
+                "type": "String"
+            },
+            {
+                "name": "Rid",
+                "type": "String"
+            }
+        ],
+        "published": false,
+        "type": "AzureSqlTable",
+        "linkedServiceName": "Destination-SQLAzure-f0g",
+        "typeProperties": {
+            "tableName": "[dbo].[IOTDataMLHistory]"
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": false,
+        "policy": {}
+    }
+}
+
+
+Pipeline
+{
+    "name": "CopyPipeline-f0g",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureDataLakeStoreSource",
+                        "recursive": true
+                    },
+                    "sink": {
+                        "type": "SqlSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    },
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "columnMappings": "Column0:UserId,Column1:Age,Column2:Height,Column3:Weight,Column4:HeartRateBPM,Column5:BreathingRate,Column6:Temperature,Column7:Steps,Column8:Velocity,Column9:Altitude,Column10:Ventilization,Column11:Activity,Column12:Cadence,Column13:Speed,Column14:HIB,Column15:HeartRateRedZone,Column16:HeartrateVariability,Column17:Status,Column18:Id,Column19:DeviceId,Column20:MessageType,Column21:Longitude,Column22:Latitude,Column23:Timestamp,Column24:EventProcessedUtcTime,Column25:PartitionId,Column26:EventEnqueuedUtcTime,Column27:FirstName,Column28:LastName,Column29:UserName,Column30:UType,Column31:Phone,Column32:Email,Column33:Gender,Column34:MLUserid,Column35:MLTimestamp,Column36:ScoredLabels,Column37:ScoredProb,Column38:Race,Column39:CompanyName,Column40:Rid"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "InputDataset-f0g"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset-f0g"
+                    }
+                ],
+                "policy": {
+                    "timeout": "1.00:00:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "style": "StartOfInterval",
+                    "retry": 3,
+                    "longRetry": 0,
+                    "longRetryInterval": "00:00:00"
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "Activity-0-Data lake path_ output_->[dbo]_[IOTDataMLHistory]"
+            }
+        ],
+        "start": "2016-12-23T03:32:59.874Z",
+        "end": "2099-12-31T05:00:00Z",
+        "isPaused": false,
+        "hubName": "populateazuresqldbs_hub",
+        "pipelineMode": "Scheduled"
+    }
+}
+

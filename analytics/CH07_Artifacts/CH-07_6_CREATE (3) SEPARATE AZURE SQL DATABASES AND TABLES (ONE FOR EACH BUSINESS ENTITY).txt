@@ -1,0 +1,59 @@
+USE [master]
+GO
+
+DROP DATABASE IF EXISTS [IOTDataMLHistory-WigiTech]
+GO
+
+CREATE DATABASE [IOTDataMLHistory-WigiTech]
+GO
+
+USE [IOTDataMLHistory-WigiTech]
+GO
+
+DROP TABLE  IF EXISTS [dbo].[IOTDataMLHistory]
+GO
+
+CREATE TABLE [dbo].[IOTDataMLHistory](
+	[UserId] [char](256) NOT NULL,
+	[Age] [float] NOT NULL,
+	[Height] [float] NOT NULL,
+	[Weight] [float] NOT NULL,
+	[HeartRateBPM] [float] NOT NULL,
+	[BreathingRate] [float] NOT NULL,
+	[Temperature] [float] NOT NULL,
+	[Steps] [float] NOT NULL,
+	[Velocity] [float] NOT NULL,
+	[Altitude] [float] NOT NULL,
+	[Ventilization] [float] NOT NULL,
+	[Activity] [float] NOT NULL,
+	[Cadence] [float] NOT NULL,
+	[Speed] [float] NOT NULL,
+	[HIB] [float] NOT NULL,
+	[HeartRateRedZone] [float] NOT NULL,
+	[HeartrateVariability] [float] NOT NULL,
+	[Status] [int] NOT NULL,
+	[Id] [char](256) NOT NULL,
+	[DeviceId] [char](256) NOT NULL,
+	[MessageType] [int] NOT NULL,
+	[Longitude] [float] NOT NULL,
+	[Latitude] [float] NOT NULL,
+	[Timestamp] [datetime2](7) NOT NULL,
+	[EventProcessedUtcTime] [datetime2](7) NOT NULL,
+	[PartitionId] [int] NOT NULL,
+	[EventEnqueuedUtcTime] [datetime2](7) NOT NULL,
+	[FirstName]  [char](256) NOT NULL,
+	[LastName]  [char](256) NOT NULL,
+	[UserName]  [char](256) NOT NULL,
+	[UType]  [char](256) NOT NULL,
+	[Phone]  [char](256) NOT NULL,
+	[Email]  [char](256) NOT NULL,
+	[Gender]  [char](256) NOT NULL,
+	[MLUserid]  [char](256) NOT NULL,
+	[MLTimestamp]  [char](256) NOT NULL,
+	[ScoredLabels]  [char](256) NOT NULL,
+	[ScoredProb]  [float] NOT NULL,
+	[Race]   [int] NOT NULL,
+	[CompanyName]  [char](256) NOT NULL,
+	[Rid]  [char](256) NOT NULL
+)
+GO

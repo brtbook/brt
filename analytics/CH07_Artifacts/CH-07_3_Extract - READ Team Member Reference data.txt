@@ -1,0 +1,44 @@
+// @ refdatateamdata 
+@refdatateamdata =
+    EXTRACT 
+        authid		string,
+        companyname	string,
+        firstname		string,
+        lastname		string,
+        username		string,
+        imageUrl		string,
+        utype	       string,
+        address1		string,	
+        address2		string,
+        address3		string,
+        city		string,
+        state		string,
+        zip		string,
+        country		string,
+        phone		string,
+        email		string,
+        linkedin		string,
+        facebook		string,
+        twitter		string,
+        blog		string,
+        age		int,
+        height		double,
+        weight		double,
+        gender		int,
+        race		int,
+        longitude		double,
+        latitude		double,
+        id			string,
+        cachettl		string,
+        _rid		string,
+        _self		string,
+        _etag		string,
+        _attachments	string,
+        _ts		string
+       
+    FROM "/refdata-team/TeamReferenceData{*}.csv"
+    USING Extractors.Csv();
+
+OUTPUT @refdatateamdata  
+    TO "/output/TESTTeamReferenceData20161222.csv"
+    USING Outputters.Csv();

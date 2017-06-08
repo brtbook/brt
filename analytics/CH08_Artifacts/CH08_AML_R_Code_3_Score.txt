@@ -1,0 +1,16 @@
+# Scorer R Script
+# Input: model, dataset
+# Output: scores
+
+# Loads the preinstalled R package.
+library(e1071)
+
+# Computes the predicted probabilities for the scoring dataset by using the trained model from the training script.
+probabilities <- predict(model, dataset, type="raw")[,2]
+
+# Apply a default threshold of 0.5 to probabilities when assigning the predicted class labels. 
+classes <- as.factor(as.numeric(probabilities >= 0.5))
+
+# Combine the class labels and probabilities into the output data frame, named "scores". 
+scores <- data.frame(classes, probabilities)
+

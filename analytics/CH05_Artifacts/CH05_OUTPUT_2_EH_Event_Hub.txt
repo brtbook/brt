@@ -1,0 +1,25 @@
+Note:
+This will be ADDED to the solution in Chapter 9.
+
+The EH Data structure is defined in the ASA Query:
+-- ****************************
+-- * HOTPATH - OUTPUT to Event Hub 
+-- * If Machine Learning Predicts Stress
+-- ***************************
+SELECT  
+        SQ.[Timestamp]as [timerstamp], 
+        RF.username,
+        AD.phone as [adminphone],
+        AD.email as [adminemail]
+
+INTO [output-EH]
+FROM subquery SQ
+
+JOIN [input-refdata-team] RF
+	ON SQ.UserId = RF.id
+   
+JOIN [input-refdata-team] AD
+     ON RF.companyname = AD.companyname
+
+WHERE   SQ.result.[Scored labels] = 'Y'
+        AND AD.type = '2'

@@ -1,0 +1,46 @@
+--Create Extract #1 - READ Streaming data input CSV files 
+
+
+@streamingdata =
+    EXTRACT             
+            userid      string,
+            age         int,
+            height      int,
+            weight      int,
+            heartratebpm    int,
+            breathingrate   double,
+            temperature double,
+            steps       int,
+            velocity    double,
+            altitude    int,
+            ventilization   double,
+            activity    double,
+            cadence     double,
+            speed       int,
+            hib         double,
+            heartrateredzone    double,
+            heartratevariability    double,
+            status     int,
+            id         string,
+            deviceid   string,
+            messagetype int,
+            longitude   double,
+            latitude    double,
+            timestamp   string,
+            eventprocessedutctime   string,
+            partitionid int,
+            eventenqueuedutctime string,
+            firstname   string,
+            lastname    string,
+            username    string,
+            utype        int,
+            phone       string,
+            email       string,
+            gender      int,
+            race        int   
+    FROM "/streamingdata/2016/StreamingResultsDailyFile{*}.csv"
+    USING Extractors.Csv();
+
+OUTPUT @streamingdata  
+    TO "/output/TESTStreamingResultsDailyFile20161222.csv"
+    USING Outputters.Csv();

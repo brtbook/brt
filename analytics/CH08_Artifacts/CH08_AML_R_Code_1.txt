@@ -1,0 +1,9 @@
+# Map 1-based optional input ports to variables
+dataset1 <- maml.mapInputPort(1) # class: data.frame
+
+# Add/Change Label to numeric 0/1 for this R model
+dataset1$ExhaustionLabel <- ifelse(dataset1$Exhaustion=="N",0,1)
+
+# Select data.frame to be sent to the output Dataset port
+maml.mapOutputPort("dataset1");
+

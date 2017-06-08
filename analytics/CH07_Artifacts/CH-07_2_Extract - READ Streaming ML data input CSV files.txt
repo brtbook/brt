@@ -1,0 +1,28 @@
+// @streamingMLdata
+@streamingmldata =
+    EXTRACT             
+            userid      string,
+            timestamp   string,
+            eventprocessedutctime   string,
+            partitionid int,
+            eventenqueuedutctime string,
+            breathingrate   double,
+            temperature double,
+            ventilization string,
+            activity    double,
+            cadence     double,
+            heartratebpm int,
+            velocity    double,
+            speed       int,
+            hib         double,
+            heartrateredzone    double,
+            heartratevariability    double,
+            scored_labels   string,
+            scored_prob    double
+       
+    FROM "/streamingmldata/2016/StreamingMLResultsDataFile{*}.csv"
+    USING Extractors.Csv();
+
+OUTPUT @streamingmldata  
+    TO "/output/TESTStreamingMLResultsDataFile20161222.csv"
+    USING Outputters.Csv();

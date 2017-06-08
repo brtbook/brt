@@ -1,0 +1,183 @@
+ReTrainMLModel
+
+Linked services
+{
+    "name": "AzureStorageLinkedService",
+    "properties": {
+        "description": "",
+        "hubName": "retrainmlmodel_hub",
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=brtblobstoragedev;AccountKey=**********"
+        }
+    }
+}
+{
+    "name": "trainingEndpoint",
+    "properties": {
+        "hubName": "retrainmlmodel_hub",
+        "type": "AzureML",
+        "typeProperties": {
+            "mlEndpoint": "https://ussouthcentral.services.azureml.net/subscriptions/ba3e37851e644e12a03e163e4aab3e53/services/d4f76cbf85d846cf8d66062ea4ac2274/jobs",
+            "apiKey": "**********"
+        }
+    }
+}
+{
+    "name": "updatableScoringEndpoint2",
+    "properties": {
+        "hubName": "retrainmlmodel_hub",
+        "type": "AzureML",
+        "typeProperties": {
+            "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/6c3d61346b3b4941953b4e1021828141/services/ae693c5ea4b941f8a35d58d090de83a2/jobs?api-version=2.0",
+            "apiKey": "**********",
+            "updateResourceEndpoint": "https://management.azureml.net/workspaces/6c3d61346b3b4941953b4e1021828141/webservices/fa53ade79d1e45cea1b408a6a09d2ad3/endpoints/updatemlmodel"
+        }
+    }
+}
+
+Datasets
+
+{
+    "name": "DummyPlaceholderBlob",
+    "properties": {
+        "published": false,
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties": {
+            "fileName": "dummyfile.csv",
+            "folderPath": "aml-retrain-data",
+            "format": {
+                "type": "TextFormat"
+            }
+        },
+        "availability": {
+            "frequency": "Week",
+            "interval": 1
+        }
+    }
+}
+
+{
+    "name": "trainedModelBlob",
+    "properties": {
+        "published": false,
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties": {
+            "fileName": "model.ilearner",
+            "folderPath": "aml-retrain-data",
+            "format": {
+                "type": "TextFormat"
+            }
+        },
+        "availability": {
+            "frequency": "Week",
+            "interval": 1
+        }
+    }
+}
+
+{
+    "name": "trainingData",
+    "properties": {
+        "published": false,
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties": {
+            "fileName": "RETRAIN_Teammates_AML_Training_Data.csv",
+            "folderPath": "aml-retrain-data",
+            "format": {
+                "type": "TextFormat"
+            }
+        },
+        "availability": {
+            "frequency": "Week",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {
+            "externalData": {
+                "retryInterval": "00:01:00",
+                "retryTimeout": "00:10:00",
+                "maximumRetry": 3
+            }
+        }
+    }
+}
+
+Pipelines
+{
+    "name": "retrainmlpipeline",
+    "properties": {
+        "activities": [
+            {
+                "type": "AzureMLBatchExecution",
+                "typeProperties": {
+                    "webServiceInput": "trainingData",
+                    "webServiceOutputs": {
+                        "output1": "trainedModelBlob"
+                    },
+                    "webServiceInputs": {},
+                    "globalParameters": {}
+                },
+                "inputs": [
+                    {
+                        "name": "trainingData"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "trainedModelBlob"
+                    }
+                ],
+                "policy": {
+                    "timeout": "02:00:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "retry": 1
+                },
+                "scheduler": {
+                    "frequency": "Week",
+                    "interval": 1
+                },
+                "name": "retraining",
+                "linkedServiceName": "trainingEndpoint"
+            },
+            {
+                "type": "AzureMLUpdateResource",
+                "typeProperties": {
+                    "trainedModelDatasetName": "trainedModelBlob",
+                    "trainedModelName": "Training Exp for ADF ML [trained model]"
+                },
+                "inputs": [
+                    {
+                        "name": "trainedModelBlob"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "DummyPlaceholderBlob"
+                    }
+                ],
+                "policy": {
+                    "timeout": "01:00:00",
+                    "concurrency": 1,
+                    "retry": 3
+                },
+                "scheduler": {
+                    "frequency": "Week",
+                    "interval": 1
+                },
+                "name": "AzureML Update Resource",
+                "linkedServiceName": "updatableScoringEndpoint2"
+            }
+        ],
+        "start": "2016-12-02T00:00:00Z",
+        "end": "2017-12-02T00:00:00Z",
+        "isPaused": false,
+        "hubName": "retrainmlmodel_hub",
+        "pipelineMode": "Scheduled"
+    }
+}
+

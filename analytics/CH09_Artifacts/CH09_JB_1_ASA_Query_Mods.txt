@@ -1,0 +1,75 @@
+-- ************************
+-- * HOTPATH - POWER BI 
+-- * Invoke Machine Learning As Function "ChkTeamHealth()"
+-- * Via ASA SQL Subquery
+-- * then output to PowerBI (Hot)/SQL (WARM)/BLOB (COLD)
+-- ************************
+WITH [subquery] AS 
+(
+    SELECT UserId,  
+     [Timestamp], 
+     EventProcessedUtcTime, 
+     PartitionId, 
+     EventEnqueuedUtcTime,
+        ChkTeamHealth(
+            UserId,
+            BreathingRate,
+            Temperature,
+            Ventilization,
+            Activity,
+            HeartRateBPM,
+            Cadence,
+            Velocity,
+            Speed,
+            HIB,
+            HeartrateRedZone,
+            HeartrateVariability,
+            "N")
+    as result from [input-iothub]
+    TIMESTAMP BY [Timestamp]
+)
+SELECT  SQ.UserId, 
+        SQ.[Timestamp], 
+        SQ.EventProcessedUtcTime, 
+        SQ.PartitionId, 
+        SQ.EventEnqueuedUtcTime,
+        CAST(SQ.result.[BreathingRate] as float) as [BreathingRate],
+        CAST(SQ.result.[Temperature] as float) as [Temperature],
+        CAST(SQ.result.[Ventilization] as float) as [Ventilization],
+        CAST(SQ.result.[Activity] as float) as [Activity],
+        CAST(SQ.result.[HeartRateBPM] as bigint) as [HeartRateBPM],
+        CAST(SQ.result.[Cadence] as float) as [Cadence],
+        CAST(SQ.result.[Velocity] as float) as [Velocity],
+        CAST(SQ.result.[Speed] as float)as [Speed],
+        SQ.result.[HIB],
+        SQ.result.[HeartrateRedZone],
+        SQ.result.[HeartrateVariability],
+        SQ.result.[Scored labels], 
+        SQ.result.[Scored Probabilities],
+        RF.id,
+	 RF.companyname,
+        RF.imageUrl, 
+        RF.firstname,
+        RF.lastname,
+        RF.username,
+        RF.[type],
+        RF.[phone],
+        RF.[email],
+	    AD.firstname as [adminfname],
+        AD.lastname as [adminlname],
+        AD.username as [adminuname],
+        AD.type as [admintype],
+        AD.phone as [adminphone],
+        AD.email as [adminemail]
+
+INTO [output-powerbi]
+
+FROM subquery SQ
+
+JOIN [input-refdata-team] RF
+	ON SQ.UserId = RF.id
+
+JOIN [input-refdata-team] AD
+    ON RF.companyname = AD.companyname
+    WHERE   AD.[type] = '2'
+

@@ -1,0 +1,1195 @@
+CopyFromBlobToDataLake
+
+Linked services
+{
+    "name": "Destination-DataLakeStore-axd",
+    "properties": {
+        "hubName": "copyfromblobtodatalake_hub",
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://brtadls.azuredatalakestore.net/webhdfs/v1",
+            "authorization": "**********",
+            "sessionId": "**********",
+            "subscriptionId": "ba3e3785-1e64-4e12-a03e-163e4aab3e53",
+            "resourceGroupName": "brtwhdev"
+        }
+    }
+}
+{
+    "name": "Destination-DataLakeStore-gt9",
+    "properties": {
+        "hubName": "copyfromblobtodatalake_hub",
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://brtadls.azuredatalakestore.net/webhdfs/v1",
+            "authorization": "**********",
+            "sessionId": "**********",
+            "subscriptionId": "ba3e3785-1e64-4e12-a03e-163e4aab3e53",
+            "resourceGroupName": "brtwhdev"
+        }
+    }
+}
+{
+    "name": "Destination-DataLakeStore-mz2",
+    "properties": {
+        "hubName": "copyfromblobtodatalake_hub",
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://brtadls.azuredatalakestore.net/webhdfs/v1",
+            "authorization": "**********",
+            "sessionId": "**********",
+            "subscriptionId": "ba3e3785-1e64-4e12-a03e-163e4aab3e53",
+            "resourceGroupName": "brtwhdev"
+        }
+    }
+}
+{
+    "name": "Source-BlobStorage-axd",
+    "properties": {
+        "hubName": "copyfromblobtodatalake_hub",
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=brtblobstoragedev;AccountKey=**********"
+        }
+    }
+}
+{
+    "name": "Source-BlobStorage-gt9",
+    "properties": {
+        "hubName": "copyfromblobtodatalake_hub",
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=brtblobstoragedev;AccountKey=**********"
+        }
+    }
+}
+{
+    "name": "Source-BlobStorage-mz2",
+    "properties": {
+        "hubName": "copyfromblobtodatalake_hub",
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=brtblobstoragedev;AccountKey=**********"
+        }
+    }
+}
+
+
+Datasets
+
+{
+    "name": "InputDataset-axd",
+    "properties": {
+        "structure": [
+            {
+                "name": "userid",
+                "type": "String"
+            },
+            {
+                "name": "timestamp",
+                "type": "Datetime"
+            },
+            {
+                "name": "eventprocessedutctime",
+                "type": "Datetime"
+            },
+            {
+                "name": "partitionid",
+                "type": "Int64"
+            },
+            {
+                "name": "eventenqueuedutctime",
+                "type": "Datetime"
+            },
+            {
+                "name": "breathingrate",
+                "type": "Double"
+            },
+            {
+                "name": "temperature",
+                "type": "Double"
+            },
+            {
+                "name": "ventilization",
+                "type": "String"
+            },
+            {
+                "name": "activity",
+                "type": "Double"
+            },
+            {
+                "name": "heartratebpm",
+                "type": "Int64"
+            },
+            {
+                "name": "cadence",
+                "type": "Double"
+            },
+            {
+                "name": "velocity",
+                "type": "Double"
+            },
+            {
+                "name": "speed",
+                "type": "Double"
+            },
+            {
+                "name": "hib",
+                "type": "Double"
+            },
+            {
+                "name": "heartrateredzone",
+                "type": "Double"
+            },
+            {
+                "name": "heartratevariability",
+                "type": "Double"
+            },
+            {
+                "name": "scored labels",
+                "type": "String"
+            },
+            {
+                "name": "scored probabilities",
+                "type": "Double"
+            }
+        ],
+        "published": false,
+        "type": "AzureBlob",
+        "linkedServiceName": "Source-BlobStorage-axd",
+        "typeProperties": {
+            "folderPath": "streamingmldata/2016/",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ",",
+                "firstRowAsHeader": true
+            }
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {}
+    }
+}
+
+{
+    "name": "InputDataset-gt9",
+    "properties": {
+        "structure": [
+            {
+                "name": "authid",
+                "type": "String"
+            },
+            {
+                "name": "companyname",
+                "type": "String"
+            },
+            {
+                "name": "firstname",
+                "type": "String"
+            },
+            {
+                "name": "lastname",
+                "type": "String"
+            },
+            {
+                "name": "username",
+                "type": "String"
+            },
+            {
+                "name": "imageUrl",
+                "type": "String"
+            },
+            {
+                "name": "type",
+                "type": "Int64"
+            },
+            {
+                "name": "address1",
+                "type": "String"
+            },
+            {
+                "name": "address2",
+                "type": "String"
+            },
+            {
+                "name": "address3",
+                "type": "String"
+            },
+            {
+                "name": "city",
+                "type": "String"
+            },
+            {
+                "name": "state",
+                "type": "String"
+            },
+            {
+                "name": "zip",
+                "type": "Int64"
+            },
+            {
+                "name": "country",
+                "type": "String"
+            },
+            {
+                "name": "phone",
+                "type": "Int64"
+            },
+            {
+                "name": "email",
+                "type": "String"
+            },
+            {
+                "name": "linkedin",
+                "type": "String"
+            },
+            {
+                "name": "facebook",
+                "type": "String"
+            },
+            {
+                "name": "twitter",
+                "type": "String"
+            },
+            {
+                "name": "blog",
+                "type": "String"
+            },
+            {
+                "name": "age",
+                "type": "Int64"
+            },
+            {
+                "name": "height",
+                "type": "Int64"
+            },
+            {
+                "name": "weight",
+                "type": "Int64"
+            },
+            {
+                "name": "gender",
+                "type": "Int64"
+            },
+            {
+                "name": "race",
+                "type": "Int64"
+            },
+            {
+                "name": "longitude",
+                "type": "Double"
+            },
+            {
+                "name": "latitude",
+                "type": "Double"
+            },
+            {
+                "name": "id",
+                "type": "String"
+            },
+            {
+                "name": "cachettl",
+                "type": "Int64"
+            },
+            {
+                "name": "_rid",
+                "type": "String"
+            },
+            {
+                "name": "_self",
+                "type": "String"
+            },
+            {
+                "name": "_etag",
+                "type": "String"
+            },
+            {
+                "name": "_attachments",
+                "type": "String"
+            },
+            {
+                "name": "_ts",
+                "type": "Int64"
+            }
+        ],
+        "published": false,
+        "type": "AzureBlob",
+        "linkedServiceName": "Source-BlobStorage-gt9",
+        "typeProperties": {
+            "folderPath": "refdata-team/",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ",",
+                "firstRowAsHeader": true
+            }
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {}
+    }
+}
+
+{
+    "name": "InputDataset-mz2",
+    "properties": {
+        "structure": [
+            {
+                "name": "userid",
+                "type": "String"
+            },
+            {
+                "name": "age",
+                "type": "Int64"
+            },
+            {
+                "name": "height",
+                "type": "Int64"
+            },
+            {
+                "name": "weight",
+                "type": "Int64"
+            },
+            {
+                "name": "heartratebpm",
+                "type": "Int64"
+            },
+            {
+                "name": "breathingrate",
+                "type": "Double"
+            },
+            {
+                "name": "temperature",
+                "type": "Double"
+            },
+            {
+                "name": "steps",
+                "type": "Int64"
+            },
+            {
+                "name": "velocity",
+                "type": "Double"
+            },
+            {
+                "name": "altitude",
+                "type": "Int64"
+            },
+            {
+                "name": "ventilization",
+                "type": "Double"
+            },
+            {
+                "name": "activity",
+                "type": "Double"
+            },
+            {
+                "name": "cadence",
+                "type": "Double"
+            },
+            {
+                "name": "speed",
+                "type": "Int64"
+            },
+            {
+                "name": "hib",
+                "type": "Double"
+            },
+            {
+                "name": "heartrateredzone",
+                "type": "Double"
+            },
+            {
+                "name": "heartratevariability",
+                "type": "Double"
+            },
+            {
+                "name": "status",
+                "type": "Int64"
+            },
+            {
+                "name": "id",
+                "type": "String"
+            },
+            {
+                "name": "deviceid",
+                "type": "String"
+            },
+            {
+                "name": "messagetype",
+                "type": "Int64"
+            },
+            {
+                "name": "longitude",
+                "type": "Double"
+            },
+            {
+                "name": "latitude",
+                "type": "Double"
+            },
+            {
+                "name": "timestamp",
+                "type": "Datetime"
+            },
+            {
+                "name": "eventprocessedutctime",
+                "type": "Datetime"
+            },
+            {
+                "name": "partitionid",
+                "type": "Int64"
+            },
+            {
+                "name": "eventenqueuedutctime",
+                "type": "Datetime"
+            },
+            {
+                "name": "firstname",
+                "type": "String"
+            },
+            {
+                "name": "lastname",
+                "type": "String"
+            },
+            {
+                "name": "username",
+                "type": "String"
+            },
+            {
+                "name": "type",
+                "type": "Int64"
+            },
+            {
+                "name": "phone",
+                "type": "Int64"
+            },
+            {
+                "name": "email",
+                "type": "String"
+            },
+            {
+                "name": "gender",
+                "type": "Int64"
+            },
+            {
+                "name": "race",
+                "type": "Int64"
+            }
+        ],
+        "published": false,
+        "type": "AzureBlob",
+        "linkedServiceName": "Source-BlobStorage-mz2",
+        "typeProperties": {
+            "folderPath": "streamingdata/",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ",",
+                "firstRowAsHeader": true
+            }
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {}
+    }
+}
+
+{
+    "name": "OutputDataset-axd",
+    "properties": {
+        "structure": [
+            {
+                "name": "userid",
+                "type": "String"
+            },
+            {
+                "name": "timestamp",
+                "type": "Datetime"
+            },
+            {
+                "name": "eventprocessedutctime",
+                "type": "Datetime"
+            },
+            {
+                "name": "partitionid",
+                "type": "Int64"
+            },
+            {
+                "name": "eventenqueuedutctime",
+                "type": "Datetime"
+            },
+            {
+                "name": "breathingrate",
+                "type": "Double"
+            },
+            {
+                "name": "temperature",
+                "type": "Double"
+            },
+            {
+                "name": "ventilization",
+                "type": "String"
+            },
+            {
+                "name": "activity",
+                "type": "Double"
+            },
+            {
+                "name": "heartratebpm",
+                "type": "Int64"
+            },
+            {
+                "name": "cadence",
+                "type": "Double"
+            },
+            {
+                "name": "velocity",
+                "type": "Double"
+            },
+            {
+                "name": "speed",
+                "type": "Double"
+            },
+            {
+                "name": "hib",
+                "type": "Double"
+            },
+            {
+                "name": "heartrateredzone",
+                "type": "Double"
+            },
+            {
+                "name": "heartratevariability",
+                "type": "Double"
+            },
+            {
+                "name": "scored labels",
+                "type": "String"
+            },
+            {
+                "name": "scored probabilities",
+                "type": "Double"
+            }
+        ],
+        "published": false,
+        "type": "AzureDataLakeStore",
+        "linkedServiceName": "Destination-DataLakeStore-axd",
+        "typeProperties": {
+            "fileName": "StreamingMLResultsDataFile{year}{month}{day}{hour}.csv",
+            "folderPath": "streamingmldata/{year}/",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ",",
+                "firstRowAsHeader": false
+            },
+            "partitionedBy": [
+                {
+                    "name": "year",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "yyyy"
+                    }
+                },
+                {
+                    "name": "month",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "MM"
+                    }
+                },
+                {
+                    "name": "day",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "dd"
+                    }
+                },
+                {
+                    "name": "hour",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "HH"
+                    }
+                }
+            ]
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": false,
+        "policy": {}
+    }
+}
+
+{
+    "name": "OutputDataset-gt9",
+    "properties": {
+        "structure": [
+            {
+                "name": "authid",
+                "type": "String"
+            },
+            {
+                "name": "companyname",
+                "type": "String"
+            },
+            {
+                "name": "firstname",
+                "type": "String"
+            },
+            {
+                "name": "lastname",
+                "type": "String"
+            },
+            {
+                "name": "username",
+                "type": "String"
+            },
+            {
+                "name": "imageUrl",
+                "type": "String"
+            },
+            {
+                "name": "type",
+                "type": "Int64"
+            },
+            {
+                "name": "address1",
+                "type": "String"
+            },
+            {
+                "name": "address2",
+                "type": "String"
+            },
+            {
+                "name": "address3",
+                "type": "String"
+            },
+            {
+                "name": "city",
+                "type": "String"
+            },
+            {
+                "name": "state",
+                "type": "String"
+            },
+            {
+                "name": "zip",
+                "type": "Int64"
+            },
+            {
+                "name": "country",
+                "type": "String"
+            },
+            {
+                "name": "phone",
+                "type": "Int64"
+            },
+            {
+                "name": "email",
+                "type": "String"
+            },
+            {
+                "name": "linkedin",
+                "type": "String"
+            },
+            {
+                "name": "facebook",
+                "type": "String"
+            },
+            {
+                "name": "twitter",
+                "type": "String"
+            },
+            {
+                "name": "blog",
+                "type": "String"
+            },
+            {
+                "name": "age",
+                "type": "Int64"
+            },
+            {
+                "name": "height",
+                "type": "Int64"
+            },
+            {
+                "name": "weight",
+                "type": "Int64"
+            },
+            {
+                "name": "gender",
+                "type": "Int64"
+            },
+            {
+                "name": "race",
+                "type": "Int64"
+            },
+            {
+                "name": "longitude",
+                "type": "Double"
+            },
+            {
+                "name": "latitude",
+                "type": "Double"
+            },
+            {
+                "name": "id",
+                "type": "String"
+            },
+            {
+                "name": "cachettl",
+                "type": "Int64"
+            },
+            {
+                "name": "_rid",
+                "type": "String"
+            },
+            {
+                "name": "_self",
+                "type": "String"
+            },
+            {
+                "name": "_etag",
+                "type": "String"
+            },
+            {
+                "name": "_attachments",
+                "type": "String"
+            },
+            {
+                "name": "_ts",
+                "type": "Int64"
+            }
+        ],
+        "published": false,
+        "type": "AzureDataLakeStore",
+        "linkedServiceName": "Destination-DataLakeStore-gt9",
+        "typeProperties": {
+            "fileName": "TeamReferenceData{year}{month}{day}{hour}.csv",
+            "folderPath": "refdata-team/",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ",",
+                "firstRowAsHeader": false
+            },
+            "partitionedBy": [
+                {
+                    "name": "year",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "yyyy"
+                    }
+                },
+                {
+                    "name": "month",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "MM"
+                    }
+                },
+                {
+                    "name": "day",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "dd"
+                    }
+                },
+                {
+                    "name": "hour",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "HH"
+                    }
+                }
+            ]
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": false,
+        "policy": {}
+    }
+}
+
+{
+    "name": "OutputDataset-mz2",
+    "properties": {
+        "structure": [
+            {
+                "name": "userid",
+                "type": "String"
+            },
+            {
+                "name": "age",
+                "type": "Int64"
+            },
+            {
+                "name": "height",
+                "type": "Int64"
+            },
+            {
+                "name": "weight",
+                "type": "Int64"
+            },
+            {
+                "name": "heartratebpm",
+                "type": "Int64"
+            },
+            {
+                "name": "breathingrate",
+                "type": "Double"
+            },
+            {
+                "name": "temperature",
+                "type": "Double"
+            },
+            {
+                "name": "steps",
+                "type": "Int64"
+            },
+            {
+                "name": "velocity",
+                "type": "Double"
+            },
+            {
+                "name": "altitude",
+                "type": "Int64"
+            },
+            {
+                "name": "ventilization",
+                "type": "Double"
+            },
+            {
+                "name": "activity",
+                "type": "Double"
+            },
+            {
+                "name": "cadence",
+                "type": "Double"
+            },
+            {
+                "name": "speed",
+                "type": "Int64"
+            },
+            {
+                "name": "hib",
+                "type": "Double"
+            },
+            {
+                "name": "heartrateredzone",
+                "type": "Double"
+            },
+            {
+                "name": "heartratevariability",
+                "type": "Double"
+            },
+            {
+                "name": "status",
+                "type": "Int64"
+            },
+            {
+                "name": "id",
+                "type": "String"
+            },
+            {
+                "name": "deviceid",
+                "type": "String"
+            },
+            {
+                "name": "messagetype",
+                "type": "Int64"
+            },
+            {
+                "name": "longitude",
+                "type": "Double"
+            },
+            {
+                "name": "latitude",
+                "type": "Double"
+            },
+            {
+                "name": "timestamp",
+                "type": "Datetime"
+            },
+            {
+                "name": "eventprocessedutctime",
+                "type": "Datetime"
+            },
+            {
+                "name": "partitionid",
+                "type": "Int64"
+            },
+            {
+                "name": "eventenqueuedutctime",
+                "type": "Datetime"
+            },
+            {
+                "name": "firstname",
+                "type": "String"
+            },
+            {
+                "name": "lastname",
+                "type": "String"
+            },
+            {
+                "name": "username",
+                "type": "String"
+            },
+            {
+                "name": "type",
+                "type": "Int64"
+            },
+            {
+                "name": "phone",
+                "type": "Int64"
+            },
+            {
+                "name": "email",
+                "type": "String"
+            },
+            {
+                "name": "gender",
+                "type": "Int64"
+            },
+            {
+                "name": "race",
+                "type": "Int64"
+            }
+        ],
+        "published": false,
+        "type": "AzureDataLakeStore",
+        "linkedServiceName": "Destination-DataLakeStore-mz2",
+        "typeProperties": {
+            "fileName": "StreamingResultsDailyFile{year}{month}{day}{hour}.csv",
+            "folderPath": "streamingdata/{year}/",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ",",
+                "firstRowAsHeader": false
+            },
+            "partitionedBy": [
+                {
+                    "name": "year",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "yyyy"
+                    }
+                },
+                {
+                    "name": "month",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "MM"
+                    }
+                },
+                {
+                    "name": "day",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "dd"
+                    }
+                },
+                {
+                    "name": "hour",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "HH"
+                    }
+                }
+            ]
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": false,
+        "policy": {}
+    }
+}
+
+
+Pipelines
+
+{
+    "name": "CopyPipeline-axd",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource",
+                        "recursive": true
+                    },
+                    "sink": {
+                        "type": "AzureDataLakeStoreSink",
+                        "copyBehavior": "MergeFiles",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "InputDataset-axd"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset-axd"
+                    }
+                ],
+                "policy": {
+                    "timeout": "1.00:00:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "style": "StartOfInterval",
+                    "retry": 3,
+                    "longRetry": 0,
+                    "longRetryInterval": "00:00:00"
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "Activity-0-Blob path_ streamingmldata_2016_->StreamingDataFile{year}{month}{day}{hour}{minute_csv"
+            }
+        ],
+        "start": "2016-12-19T22:41:58.369Z",
+        "end": "2099-12-31T05:00:00Z",
+        "isPaused": false,
+        "hubName": "copyfromblobtodatalake_hub",
+        "pipelineMode": "Scheduled"
+    }
+}
+
+{
+    "name": "CopyPipeline-gt9",
+    "properties": {
+        "description": "Copy rdata-team/TeamReferenceData.csv",
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource",
+                        "recursive": true
+                    },
+                    "sink": {
+                        "type": "AzureDataLakeStoreSink",
+                        "copyBehavior": "MergeFiles",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "InputDataset-gt9"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset-gt9"
+                    }
+                ],
+                "policy": {
+                    "timeout": "1.00:00:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "style": "StartOfInterval",
+                    "retry": 3,
+                    "longRetry": 0,
+                    "longRetryInterval": "00:00:00"
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "Activity-0-Blob path_ refdata-team_->TeamReferenceData{year}{month}{day}{hour}_csv"
+            }
+        ],
+        "start": "2016-12-20T17:01:56.712Z",
+        "end": "2099-12-31T05:00:00Z",
+        "isPaused": false,
+        "hubName": "copyfromblobtodatalake_hub",
+        "pipelineMode": "Scheduled"
+    }
+}
+
+{
+    "name": "CopyPipeline-mz2",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource",
+                        "recursive": true
+                    },
+                    "sink": {
+                        "type": "AzureDataLakeStoreSink",
+                        "copyBehavior": "MergeFiles",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "InputDataset-mz2"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset-mz2"
+                    }
+                ],
+                "policy": {
+                    "timeout": "1.00:00:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "style": "StartOfInterval",
+                    "retry": 3,
+                    "longRetry": 0,
+                    "longRetryInterval": "00:00:00"
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "Activity-0-Blob path_ streamingdata_->StreamingResultsDailyDataFile{year}{month}{day}{hour}_csv"
+            }
+        ],
+        "start": "2016-12-19T23:08:41.102Z",
+        "end": "2099-12-31T05:00:00Z",
+        "isPaused": false,
+        "hubName": "copyfromblobtodatalake_hub",
+        "pipelineMode": "Scheduled"
+    }
+}
+
+
+
+
+
+
