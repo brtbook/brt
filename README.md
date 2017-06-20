@@ -1,7 +1,7 @@
 # Business in Real-Time Using Azure IoT and Cortana Intelligence Suite #
 by Bob Familiar and Jeff Barnes
 
-[Availabe on Amazon](https://www.amazon.com/Business-Real-Time-Using-Cortana-Intelligence/dp/1484226496/ref=sr_1_7?ie=UTF8&qid=1492633212&sr=8-7&keywords=business+in+real+time)
+[Available on Amazon](https://www.amazon.com/Business-Real-Time-Using-Cortana-Intelligence/dp/1484226496/ref=sr_1_7?ie=UTF8&qid=1492633212&sr=8-7&keywords=business+in+real+time)
 
 ## Introduction ##
 Every business today is going through a digital transformation due to disruptive forces in the market, from born-in-the-cloud competitors to the increasing demands of customers, partners and employees to engage through modern digital experiences. They are evolving from relying only on historical data to learning to use both historical and real-time data to drive innovation, evolve business strategy and automate critical business processes.
